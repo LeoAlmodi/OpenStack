@@ -73,12 +73,12 @@ Será feito isso para todos os hosts.
 
 
 
-
 ## App
 
 
 
 ### Tarefa 1
+
 Após instalar o postgresql no server 1, iremos testar algumas coisas.
 
 ![Tarefa 1 - 1](./img/R1_T1_1.png)
@@ -143,8 +143,11 @@ Esse seção deve ser preenchida apenas se houver demanda do roteiro.
 
 ## Discussões
 
-Quais as dificuldades encontradas? O que foi mais fácil? O que foi mais difícil?
+
+As principais difuculdades encontradas foram quando encontrávamos algum erro de permissão, ou algo parecido, era difícil entender aonde encontrar o arquivo e arrumá-lo. Porém o que foi mais fácil foi entender, em geral, o uso e a importância do MaaS para a subrede. E o mais difícil foi fazer o load balancer.
 
 ## Conclusão
 
 O que foi possível concluir com a realização do roteiro?
+
+Em conclusão, o roteiro foi importante para o aprendizado e entendimento do bare metal e o básico da criação de uma subrede. Também foi interessante entender alguns problemas comuns na criação, como por exemplo a questão de permissão e conexão entre os hosts.
