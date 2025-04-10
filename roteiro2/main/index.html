@@ -495,6 +495,54 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="App">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#instalando-o-dashboard-do-juju-para-o-controlador-principal-controller" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalando o Dashboard do JUJU para o controlador principal (controller)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fazendo-o-deploy-da-aplicacao-grafana-e-prometheus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fazendo o deploy da Aplicação Grafana e Prometheus
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fazendo o deploy da Aplicação Grafana e Prometheus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deploy-grafana-e-prometheus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploy Grafana e Prometheus
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarefa-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarefa 1
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -642,6 +690,54 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="App">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#instalando-o-dashboard-do-juju-para-o-controlador-principal-controller" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instalando o Dashboard do JUJU para o controlador principal (controller)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fazendo-o-deploy-da-aplicacao-grafana-e-prometheus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fazendo o deploy da Aplicação Grafana e Prometheus
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fazendo o deploy da Aplicação Grafana e Prometheus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deploy-grafana-e-prometheus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploy Grafana e Prometheus
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tarefa-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarefa 1
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -699,6 +795,70 @@ se todas as máquinas estão ready.</p>
 <div class="termy" data-termynal data-ty-macos data-ty-title="bash"><span data-ty>juju bootstrap --bootstrap-series=jammy --constraints tags=juju maas-one maas-controller<br></span></div>
 
 <h2 id="app">App</h2>
+<h3 id="instalando-o-dashboard-do-juju-para-o-controlador-principal-controller">Instalando o Dashboard do JUJU para o controlador principal (controller)</h3>
+<div class="termy" data-termynal data-ty-macos data-ty-title="bash"><span data-ty>juju switch controller<br>juju deploy juju-dashboard dashboard --to lxd:0<br>juju integrate dashboard controller<br>juju expose dashboard<br>juju dashboard<br></span></div>
+
+<p>Após a instalação do Dashboard, rodamos os seguintes comandos:</p>
+<div class="termy" data-termynal data-ty-macos data-ty-title="bash"><span data-ty>juju switch maas-controller:admin/maas<br></span></div>
+
+<h3 id="fazendo-o-deploy-da-aplicacao-grafana-e-prometheus">Fazendo o deploy da Aplicação Grafana e Prometheus</h3>
+<h4 id="deploy-grafana-e-prometheus">Deploy Grafana e Prometheus</h4>
+<ul>
+<li>Criamos uma pasta chamada charms para baixar o charm do Grafana e do Prometheus do repositório charm-hub.</li>
+</ul>
+<div class="termy" data-termynal data-ty-macos data-ty-title="bash"><span data-ty>mkdir -p /home/cloud/charms<br>cd /home/cloud/charms<br></span></div>
+
+<ul>
+<li>Baixamos o charm do https://charmhub.io/grafana usando o comando juju download.</li>
+</ul>
+<div class="termy" data-termynal data-ty-macos data-ty-title="bash"><span data-ty>juju download grafana<br></span></div>
+
+<ul>
+<li>Também vamos utilizar o charm do Prometheus</li>
+</ul>
+<div class="termy" data-termynal data-ty-macos data-ty-title="bash"><span data-ty>juju download prometheus2<br></span></div>
+
+<ul>
+<li>Agora demos o deploy de ambas aplicações</li>
+</ul>
+<div class="termy" data-termynal data-ty-macos data-ty-title="bash"><span data-ty>juju deploy ./prometheus2_r60.charm<br>juju deploy ./grafana_r69.charm --series focal<br></span></div>
+
+<ul>
+<li>Por último, fizemos a integração dessas duas aplicações</li>
+</ul>
+<div class="termy" data-termynal data-ty-macos data-ty-title="bash"><span data-ty>juju integrate grafana:grafana-source prometheus2:grafana-source<br></span></div>
+
+<h3 id="tarefa-1">Tarefa 1</h3>
+<figure>
+<p><a class="glightbox" href="../img/R2_T1_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Tarefa 1 - 1" src="../img/R2_T1_1.png" /></a></p>
+<figcaption>
+<p>Dashboard do MAAS com as Maquinas e seus respectivos IPs.</p>
+</figcaption>
+</figure>
+<figure>
+<p><a class="glightbox" href="../img/R2_T1_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Tarefa 1 - 2" src="../img/R2_T1_2.png" /></a></p>
+<figcaption>
+<p>Tela do comando "juju status" depois que o Grafana estiver "active".</p>
+</figcaption>
+</figure>
+<figure>
+<p><a class="glightbox" href="../img/R2_T1_3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Tarefa 1 - 3" src="../img/R2_T1_3.png" /></a></p>
+<figcaption>
+<p>Dashboard do Grafana com o Prometheus aparecendo como source.</p>
+</figcaption>
+</figure>
+<figure>
+<p><a class="glightbox" href="../img/R2_T1_4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Tarefa 1 - 4" src="../img/R2_T1_4.png" /></a></p>
+<figcaption>
+<p>Dashboard a partir da rede do Insper.</p>
+</figcaption>
+</figure>
+<figure>
+<p><a class="glightbox" href="../img/R2_T1_5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Tarefa 1 - 5" src="../img/R2_T1_5.png" /></a></p>
+<figcaption>
+<p>Aplicações sendo gerenciadas pelo JUJU</p>
+</figcaption>
+</figure>
 
 
 
