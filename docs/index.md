@@ -8,15 +8,15 @@
 
 ## KIT-P
 
-João da Silva
+Leonardo Almodi dos Reis
 
-Pedro de Souza
+Arthur Esteves Calabresi
 
 
 ## Entregas
 
 - [x] Roteiro 1 - Data 23/02/2025
-- [ ] Roteiro 2
+- [x] Roteiro 2 
 - [ ] Roteiro 3
 - [ ] Roteiro 4
 - [ ] Projeto
