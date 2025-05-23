@@ -6,7 +6,7 @@
     2025.1
 
 
-## KIT-P
+## KIT-X
 
 Leonardo Almodi dos Reis
 
@@ -15,11 +15,11 @@ Arthur Esteves Calabresi
 
 ## Entregas
 
-- [x] Roteiro 1 
-- [x] Roteiro 2 
-- [ ] Roteiro 3
-- [ ] Roteiro 4
-- [ ] Projeto
+- [x] Roteiro 1 - MAAS
+- [x] Roteiro 2 - JUJU
+- [ ] Roteiro 3 - OpenStack
+- [ ] Roteiro 4 - SLA, DR e IaC
+- [ ] Projeto 
 
 
 ## Referências

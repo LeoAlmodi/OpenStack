@@ -548,6 +548,11 @@ juju add-unit nova-compute
 juju add-unit --to 3 ceph-osd
 ```
 
+![Tarefa 3](./img/R3_T3.png)
+/// caption
+Arquitetura de rede.
+///
+
 ## App
 
 **TAREFA**: Levantar as aplicações em máquinas virtuais do Openstack:
@@ -585,4 +590,33 @@ sudo service nginx restart
 
 4. **Quarto Passo**: APIs:
 
+
+![Tarefa 4 ](./img/R3_T4_2.png)
+/// caption
+Arquitetura de rede da infraestrutura dentro do Dashboard do Openstack.
+///
+![Tarefa 4 ](./img/R3_T4_3.png)
+/// caption
+Lista de VMs utilizadas com nome e IPs alocados.
+///
+![Tarefa 4 ](./img/R3_T4_4.png)
+/// caption
+Dashboard do FastAPI conectado via máquina Nginx/LB.
+///
+![Tarefa 4 ](./img/R3_T4_4_lb.png)
+/// caption
+Server (máquina física) que a instância load balancer foi alocada pelo OpenStack.
+///
+![Tarefa 4 ](./img/R3_T4_4_api1.png)
+/// caption
+Server (máquina física) que a instância api 1 foi alocada pelo OpenStack.
+///
+![Tarefa 4 ](./img/R3_T4_4_api2.png)
+/// caption
+Server (máquina física) que a instância api 2 foi alocada pelo OpenStack.
+///
+![Tarefa 4 ](./img/R3_T4_4_db.png)
+/// caption
+Server (máquina física) que a instância db (database) foi alocada pelo OpenStack.
+///
 
