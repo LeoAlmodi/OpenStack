@@ -129,6 +129,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#projeto" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -484,6 +489,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -517,6 +524,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -535,9 +544,150 @@
   
 
 
-  <h1>Projeto</h1>
-
-
+<h1 id="projeto">Projeto</h1>
+<p>O projeto se trata de uma API RESTful que é ser capaz de cadastrar e autenticar usuários.</p>
+<p>Consiste em duas entregas, Docker e AWS.</p>
+<ul>
+<li><strong>Integrantes</strong>: Leonardo Almodi dos Reis e Arthur Esteves Calabresi.</li>
+<li><strong>Curso</strong>: Engenharia de Computação.</li>
+<li><strong>Ano</strong>: 2025.</li>
+</ul>
+<h1 id="entrega-1">Entrega 1</h1>
+<h2 id="explicacao">Explicação</h2>
+<p>Na primeira etapa do projeto, o grupo desenvolveu uma <strong>API RESTful</strong> com funcionalidades de cadastro e login de usuários, além de um endpoint dedicado à consulta de cotações de moedas, utilizando a AwesomeAPI. A aplicação permite o registro de novos usuários e a realização de login com autenticação baseada em tokens. Após a autenticação, o usuário tem acesso a um endpoint que se comunica com a AwesomeAPI e retorna, em tempo real, as cotações atualizadas de diversas moedas.</p>
+<p>Com as funcionalidades principais implementadas, a API foi dockerizada, assegurando portabilidade e facilidade de execução em diferentes ambientes. A imagem resultante foi publicada no Docker Hub, facilitando o compartilhamento e a implantação da aplicação.</p>
+<h2 id="como-executar-o-projeto">Como Executar o Projeto</h2>
+<ol>
+<li>
+<p>Clone o repositório:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>pull<span class="w"> </span>arthurec/projeto01-nuvens
+</span></code></pre></div></p>
+</li>
+<li>
+<p>Inicie o container:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>--build<span class="w"> </span>-d
+</span></code></pre></div></p>
+</li>
+</ol>
+<h2 id="documentacao-dos-endpoints">Documentação dos Endpoints</h2>
+<h3 id="registrar-usuario">🔐 Registrar Usuário</h3>
+<ul>
+<li><strong>URL:</strong> <code>POST /registrar</code>  </li>
+<li><strong>Descrição:</strong> Cria um novo usuário e retorna um token JWT.  </li>
+<li><strong>Status de sucesso:</strong> <code>201 Created</code></li>
+</ul>
+<h4 id="corpo-da-requisicao">Corpo da Requisição:</h4>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">&quot;nome&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;João da Silva&quot;</span><span class="p">,</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;joao@email.com&quot;</span><span class="p">,</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="nt">&quot;senha&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;minhasenha123&quot;</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">}</span>
+</span></code></pre></div>
+<h4 id="resposta-de-sucesso">Resposta de Sucesso:</h4>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">{</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">&quot;jwt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;token JWT gerado&gt;&quot;</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">}</span>
+</span></code></pre></div>
+<h4 id="erros">Erros:</h4>
+<ul>
+<li><code>400 Bad Request</code> – E-mail já cadastrado</li>
+</ul>
+<hr />
+<h3 id="login-de-usuario">🔓 Login de Usuário</h3>
+<ul>
+<li><strong>URL:</strong> <code>POST /login</code>  </li>
+<li><strong>Descrição:</strong> Realiza login e retorna um token JWT.  </li>
+<li><strong>Status de sucesso:</strong> <code>200 OK</code></li>
+</ul>
+<h4 id="corpo-da-requisicao_1">Corpo da Requisição:</h4>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;joao@email.com&quot;</span><span class="p">,</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="nt">&quot;senha&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;minhasenha123&quot;</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">}</span>
+</span></code></pre></div>
+<h4 id="resposta-de-sucesso_1">Resposta de Sucesso:</h4>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="p">{</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="nt">&quot;jwt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;token JWT gerado&gt;&quot;</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">}</span>
+</span></code></pre></div>
+<h4 id="erros_1">Erros:</h4>
+<ul>
+<li><code>401 Unauthorized</code> – Credenciais inválidas</li>
+</ul>
+<hr />
+<h3 id="consultar-cotacao-de-moedas">💱 Consultar Cotação de Moedas</h3>
+<ul>
+<li><strong>URL:</strong> <code>GET /consultar</code>  </li>
+<li><strong>Descrição:</strong> Retorna a cotação atual de moedas via AwesomeAPI.  </li>
+<li><strong>Requer autenticação:</strong> <code>Bearer Token</code>  </li>
+<li><strong>Status de sucesso:</strong> <code>200 OK</code></li>
+</ul>
+<h4 id="cabecalho">Cabeçalho:</h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Authorization: Bearer &lt;token JWT&gt;
+</span></code></pre></div>
+<h4 id="resposta-de-sucesso_2">Resposta de Sucesso:</h4>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">{</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="nt">&quot;dados&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="nt">&quot;USDBRL&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">      </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;USD&quot;</span><span class="p">,</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">      </span><span class="nt">&quot;codein&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BRL&quot;</span><span class="p">,</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Dólar Americano/Real Brasileiro&quot;</span><span class="p">,</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">      </span><span class="nt">&quot;high&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5.3241&quot;</span><span class="p">,</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">      </span><span class="nt">&quot;low&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5.2671&quot;</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">      </span><span class="c1">// outros dados...</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="p">}</span>
+</span></code></pre></div>
+<h4 id="erros_2">Erros:</h4>
+<ul>
+<li><code>401 Unauthorized</code> – Usuário não autenticado</li>
+</ul>
+<hr />
+<h3 id="health-check">❤️ Health Check</h3>
+<ul>
+<li><strong>URL:</strong> <code>GET /health-check</code>  </li>
+<li><strong>Descrição:</strong> Verifica o status da API.  </li>
+<li><strong>Status de sucesso:</strong> <code>200 OK</code></li>
+</ul>
+<h4 id="resposta">Resposta:</h4>
+<h2 id="statuscode-200-timestamp-2025-05-30t143210123456-hostname-api-container-12345"><div class="language-json highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="p">{</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="nt">&quot;statusCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-05-30T14:32:10.123456&quot;</span><span class="p">,</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span><span class="nt">&quot;hostname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;api-container-12345&quot;</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="p">}</span>
+</span></code></pre></div></h2>
+<figure>
+<p><a class="glightbox" href="../img/P_E1_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Endpoints - 1" src="../img/P_E1_1.png" /></a></p>
+<figcaption>
+<p>Endpoint de cadastro.</p>
+</figcaption>
+</figure>
+<figure>
+<p><a class="glightbox" href="../img/P_E1_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Endpoints - 2" src="../img/P_E1_2.png" /></a></p>
+<figcaption>
+<p>Endpoint de login.</p>
+</figcaption>
+</figure>
+<figure>
+<p><a class="glightbox" href="../img/P_E1_3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Endpoints - 3" src="../img/P_E1_3.png" /></a></p>
+<figcaption>
+<p>Endpoint para consultar o scrap, que funciona apenas se o usuário tiver cadastro e token.</p>
+</figcaption>
+</figure>
+<figure>
+<p><a class="glightbox" href="../img/P_E1_4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Endpoints - 4" src="../img/P_E1_4.png" /></a></p>
+<figcaption>
+<p>Endpoint de health check.</p>
+</figcaption>
+</figure>
+<h2 id="video-de-execucao-da-aplicacao">Vídeo de Execução da Aplicação</h2>
+<p><a href="../video/FastAPI_Nuvens.webm">Baixar/Ver vídeo (.webm)</a></p>
+<h2 id="link-para-o-docker-hub-do-projeto">Link Para o Docker Hub do Projeto</h2>
+<p>Clique <a href="https://hub.docker.com/r/arthurec/projeto01-nuvens">aqui</a> para abrir o o link do Docker Hub.</p>
+<h2 id="compose-final">Compose Final</h2>
+<h3 id="localizacao">Localização</h3>
+<h3 id="arquivo">Arquivo</h3>
 
 
 
