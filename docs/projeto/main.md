@@ -131,7 +131,10 @@ Authorization: Bearer <token JWT>
   "hostname": "api-container-12345"
 }
 ```
+
 ---
+
+### Screenshots dos Endpoints funcionando:
 
 ![Endpoints - 1](./img/P_E1_1.png)
 /// caption
@@ -160,6 +163,90 @@ Clique [aqui](https://hub.docker.com/r/arthurec/projeto01-nuvens) para abrir o o
 
 ## Compose Final
 
-### Localização
+O arquivo *compose.yaml* está na raíz do projeto. Seu conteúdo é o seguinte:
 
-### Arquivo
+**Arquivo:** `compose.yaml` 
+
+```yaml
+services:
+  api:
+    image: arthurec/projeto01-nuvens
+    env_file: .env
+    restart: always
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:latest
+    hostname: db
+    environment:
+      POSTGRES_USER: ${DATABASE_USER:-projeto}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-projeto}
+      POSTGRES_DB: ${DATABASE_NAME:-projeto}
+```
+
+
+# Entrega 2
+
+#### **Projeto FastAPI no AWS Lightsail**
+
+A parte 2 do projeto consiste em:
+
+- Implantar a API utilizando o AWS Lightsail Container Service.
+- Configurar o PostgreSQL no Lightsail.
+- Conectar a aplicação ao banco de dados.
+- Gerenciar e monitorar o custo do serviço em produção. (Nesse projeto o limite de gasto por mês é de 50 dólares)
+
+Antes de iniciar o grupo teve que certificar que:
+
+- Conta ativa na AWS com acesso ao Lightsail.
+- Docker instalado e configurado.
+- Código da aplicação FastAPI pronto e funcional localmente.
+
+## Screenshots dos Endpoints funcionando no AWS:
+
+![Endpoints - 1](./img/P_E2_1.png)
+/// caption
+Endpoint de cadastro.
+///
+![Endpoints - 2](./img/P_E2_2.png)
+/// caption
+Endpoint de login.
+///
+![Endpoints - 3](./img/P_E2_3.png)
+/// caption
+Endpoint para consultar o scrap, que funciona apenas se o usuário tiver cadastro e token.
+///
+![Endpoints - 4](./img/P_E2_4.png)
+/// caption
+Endpoint de health check.
+/// 
+
+## Screenshot de infraestrutura na AWS:
+
+![Infra - 1](./img/P_E2_infra_1.png)
+/// caption
+Infraestrutura API.
+/// 
+![Infra - 2](./img/P_E2_infra_2.png)
+/// caption
+Infraestrutura DB.
+/// 
+![Infra - 3](./img/P_E2_infra_3.png)
+/// caption
+Infraestrutura.
+/// 
+
+## Screenshot do custo no dia eda submissão dos documentos:
+
+![Custo - 1](./img/P_E2_custo.png)
+/// caption
+Tela dos custos.
+/// 
+
+## Vídeo de execução da aplicação funcionando no Ligthsail.
+
+[Baixar/Ver vídeo (.webm)](./video/P_E2.webm)
+

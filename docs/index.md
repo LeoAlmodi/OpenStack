@@ -17,9 +17,9 @@ Arthur Esteves Calabresi
 
 - [x] Roteiro 1 - MAAS
 - [x] Roteiro 2 - JUJU
-- [ ] Roteiro 3 - OpenStack
-- [ ] Roteiro 4 - SLA, DR e IaC
-- [ ] Projeto 
+- [x] Roteiro 3 - OpenStack
+- [x] Roteiro 4 - SLA, DR e IaC
+- [x] Projeto - FastAPI e AWS
 
 
 ## Referências
