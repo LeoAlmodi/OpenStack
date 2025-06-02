@@ -651,12 +651,14 @@
 <li><strong>Status de sucesso:</strong> <code>200 OK</code></li>
 </ul>
 <h4 id="resposta">Resposta:</h4>
-<h2 id="statuscode-200-timestamp-2025-05-30t143210123456-hostname-api-container-12345"><div class="language-json highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="p">{</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="p">{</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="nt">&quot;statusCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-05-30T14:32:10.123456&quot;</span><span class="p">,</span>
 </span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span><span class="nt">&quot;hostname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;api-container-12345&quot;</span>
 </span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="p">}</span>
-</span></code></pre></div></h2>
+</span></code></pre></div>
+<hr />
+<h3 id="screenshots-dos-endpoints-funcionando">Screenshots dos Endpoints funcionando:</h3>
 <figure>
 <p><a class="glightbox" href="../img/P_E1_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Endpoints - 1" src="../img/P_E1_1.png" /></a></p>
 <figcaption>
@@ -686,8 +688,94 @@
 <h2 id="link-para-o-docker-hub-do-projeto">Link Para o Docker Hub do Projeto</h2>
 <p>Clique <a href="https://hub.docker.com/r/arthurec/projeto01-nuvens">aqui</a> para abrir o o link do Docker Hub.</p>
 <h2 id="compose-final">Compose Final</h2>
-<h3 id="localizacao">Localização</h3>
-<h3 id="arquivo">Arquivo</h3>
+<p>O arquivo <em>compose.yaml</em> está na raíz do projeto. Seu conteúdo é o seguinte:</p>
+<p><strong>Arquivo:</strong> <code>compose.yaml</code> </p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nt">services</span><span class="p">:</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="nt">api</span><span class="p">:</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arthurec/projeto01-nuvens</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="nt">env_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.env</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8000:8000&quot;</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">  </span><span class="nt">db</span><span class="p">:</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres:latest</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">      </span><span class="nt">POSTGRES_USER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${DATABASE_USER:-projeto}</span>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">      </span><span class="nt">POSTGRES_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${DATABASE_PASSWORD:-projeto}</span>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="w">      </span><span class="nt">POSTGRES_DB</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${DATABASE_NAME:-projeto}</span>
+</span></code></pre></div>
+<h1 id="entrega-2">Entrega 2</h1>
+<h4 id="projeto-fastapi-no-aws-lightsail"><strong>Projeto FastAPI no AWS Lightsail</strong></h4>
+<p>A parte 2 do projeto consiste em:</p>
+<ul>
+<li>Implantar a API utilizando o AWS Lightsail Container Service.</li>
+<li>Configurar o PostgreSQL no Lightsail.</li>
+<li>Conectar a aplicação ao banco de dados.</li>
+<li>Gerenciar e monitorar o custo do serviço em produção. (Nesse projeto o limite de gasto por mês é de 50 dólares)</li>
+</ul>
+<p>Antes de iniciar o grupo teve que certificar que:</p>
+<ul>
+<li>Conta ativa na AWS com acesso ao Lightsail.</li>
+<li>Docker instalado e configurado.</li>
+<li>Código da aplicação FastAPI pronto e funcional localmente.</li>
+</ul>
+<h2 id="screenshots-dos-endpoints-funcionando-no-aws">Screenshots dos Endpoints funcionando no AWS:</h2>
+<figure>
+<p><a class="glightbox" href="../img/P_E2_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Endpoints - 1" src="../img/P_E2_1.png" /></a></p>
+<figcaption>
+<p>Endpoint de cadastro.</p>
+</figcaption>
+</figure>
+<figure>
+<p><a class="glightbox" href="../img/P_E2_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Endpoints - 2" src="../img/P_E2_2.png" /></a></p>
+<figcaption>
+<p>Endpoint de login.</p>
+</figcaption>
+</figure>
+<figure>
+<p><a class="glightbox" href="../img/P_E2_3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Endpoints - 3" src="../img/P_E2_3.png" /></a></p>
+<figcaption>
+<p>Endpoint para consultar o scrap, que funciona apenas se o usuário tiver cadastro e token.</p>
+</figcaption>
+</figure>
+<figure>
+<p><a class="glightbox" href="../img/P_E2_4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Endpoints - 4" src="../img/P_E2_4.png" /></a></p>
+<figcaption>
+<p>Endpoint de health check.</p>
+</figcaption>
+</figure>
+<h2 id="screenshot-de-infraestrutura-na-aws">Screenshot de infraestrutura na AWS:</h2>
+<figure>
+<p><a class="glightbox" href="../img/P_E2_infra_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Infra - 1" src="../img/P_E2_infra_1.png" /></a></p>
+<figcaption>
+<p>Infraestrutura API.</p>
+</figcaption>
+</figure>
+<figure>
+<p><a class="glightbox" href="../img/P_E2_infra_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Infra - 2" src="../img/P_E2_infra_2.png" /></a></p>
+<figcaption>
+<p>Infraestrutura DB.</p>
+</figcaption>
+</figure>
+<figure>
+<p><a class="glightbox" href="../img/P_E2_infra_3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Infra - 3" src="../img/P_E2_infra_3.png" /></a></p>
+<figcaption>
+<p>Infraestrutura.</p>
+</figcaption>
+</figure>
+<h2 id="screenshot-do-custo-no-dia-eda-submissao-dos-documentos">Screenshot do custo no dia eda submissão dos documentos:</h2>
+<figure>
+<p><a class="glightbox" href="../img/P_E2_custo.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Custo - 1" src="../img/P_E2_custo.png" /></a></p>
+<figcaption>
+<p>Tela dos custos.</p>
+</figcaption>
+</figure>
+<h2 id="video-de-execucao-da-aplicacao-funcionando-no-ligthsail">Vídeo de execução da aplicação funcionando no Ligthsail.</h2>
+<p><a href="../video/P_E2.webm">Baixar/Ver vídeo (.webm)</a></p>
 
 
 
